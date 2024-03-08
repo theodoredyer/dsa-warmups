@@ -1,20 +1,18 @@
-def maxProduct(self, nums):
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        res = max(nums)
+        curmax, curmin = 1, 1
 
-    maxprod = max(nums)
+        for n in nums:
+            if n == 0:
+                curmax, curmin = 1, 1
+                continue
+            
+            temp = curmax * n
 
-    current_max = 1
-    current_min = 1
+            curmax = max(curmax * n, curmin * n, n)
+            curmin = min(temp, curmin * n, n)
 
-    for num in nums:
-        if(num == 0):
-            current_max = 1
-            current_min = 1
-            continue
-        else:
-            tmp = current_max
-            current_max = max(num * current_max, num * current_min, num)
-            current_min = min(num * tmp, num * current_min, num)
+            res = max(res, curmax)
 
-        maxprod = max(current_max, maxprod)
-
-    return maxprod
+        return res
