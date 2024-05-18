@@ -1,7 +1,6 @@
 import os
 import shutil
 
-# Function to create subdirectories based on problem number range
 def create_subdirectories(directory):
     files = [f for f in os.listdir(directory) if f.endswith('.py')]
     if files:
@@ -18,7 +17,6 @@ def create_subdirectories(directory):
                     print(f"Moving file {file} to subdirectory: {subdirectory_path}")
                     shutil.move(os.path.join(directory, file), os.path.join(subdirectory_path, file))
 
-# Main function to organize directories
 def organize_directories():
     base_directory = "dsa-warmups"
     for root, dirs, files in os.walk(base_directory):
@@ -26,7 +24,6 @@ def organize_directories():
             if directory in ['easy', 'medium', 'hard']:
                 directory_path = os.path.join(root, directory)
                 create_subdirectories(directory_path)
-
-# Call the main function
+                
 if __name__ == "__main__":
     organize_directories()
