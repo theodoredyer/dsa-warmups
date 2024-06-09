@@ -1,3 +1,4 @@
+#### ==================================================================
 # Backtracking
 ## Explanation
 Like trying to solve a maze by exploring all possible paths. When we reach dead ends we backtrack (go abck to previous decision point) and try a different path
@@ -83,12 +84,70 @@ Problem(matrix, target_list_or_word):
 
 
 
+#### ==================================================================
+# Trie
+
+## Explanation
+Similar to basic tree but used specifically for words
+
+### General Runtime
+Used for O(26*n) time lookups
+
+## When to Use
+Fairly standout - when we need to look up / store strings for autocomplete/spellcheck, implementing dictionaries, sorted retrieval, 
+
+## Templates
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.endOfWord = False
+
+class Trie:
+
+    def __init__(self):
+        self.root = TrieNode()
+        
+
+    def insert(self, word: str) -> None:
+        curr = self.root
+
+        for c in word:
+            if c not in curr.children:
+                curr.children[c] = TrieNode()
+            curr = curr.children[c]
+        curr.endOfWord = True
+
+
+    def search(self, word: str) -> bool:
+        curr = self.root
+
+        for c in word:
+            if c not in curr.children:
+                return False
+            curr = curr.children[c]
+        return curr.endOfWord
+        
+
+    def startsWith(self, prefix: str) -> bool:
+        curr = self.root
+
+        for c in prefix:
+            if c not in curr.children:
+                return False
+            curr = curr.children[c]
+        if len(curr.children) == 0:
+            return curr.endOfWord
+        return True
+    
+
+#### ==================================================================
 
 
 
 
 
 
+#### ==================================================================
 # Problem Type
 
 ## Explanation
@@ -98,4 +157,5 @@ Problem(matrix, target_list_or_word):
 ## When to Use
 
 ## Templates
+#### ==================================================================
 
