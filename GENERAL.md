@@ -142,6 +142,38 @@ class Trie:
 
 #### ==================================================================
 
+#### ==================================================================
+# Heap / Priority Queue
+
+## Explanation
+- Can be illustrated as a nearly complete binary tree, or an array. 
+- Max heap = for a given node i, i.val is greater than or equal to val of all of its children, reverse this for min heap. 
+- When heaps are represented as an array:
+[21, 17, 15, 14, 9, 12, 13, 8, 5, 1]
+
+To access a node's left child: index * 2
+To access a node's right child: index * 2 + 1
+To access a node's parent: floor(index / 2)
+
+- Height is O(log(n))
+- Priority queue is similar to a regular queue or stack, but is an abstract data type and each element has a priority, where elements are then dequeued according to their priority. 
+
+### General Runtime
+- Insertion = O(log n)
+- Deletion = O(log n)
+- Peek = O(1)
+- Build heap = O(n)
+
+## When to Use
+- Scheduling tasks - when tasks need to be processed in order of priority
+- Graph algorithms - Used in Dijkstra's and Prim's for finding shortest paths and minimum spanning trees. 
+- Event Simulation - Managing events in simulations where events need to be processed based on their scheduled time. 
+- Real-time systems - for handling real time tasks with varying priorities
+
+
+## Templates
+#### ==================================================================
+
 
 
 
