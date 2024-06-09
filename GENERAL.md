@@ -1,6 +1,5 @@
 # General
 - If we need to track a list, suppose a list of user_ids that someone is following for a twitter clone and we want to be able to add and remove in constant time, use a set instead of list, or for tracking all of the users of a system "user1 follows u2, u3, u4" "user 2 follows u4" etc, use a hashset with key = user, val = hashset of followees
-
 - Sets use [setname.add / setname.remove] not append
 
 #### ==================================================================
