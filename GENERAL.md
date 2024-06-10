@@ -3,6 +3,35 @@
 - Sets use [setname.add / setname.remove] not append
 - To sort a list of entities by something other than just pure value: "thing.sort(key=lambda i: i[1])"
 
+
+
+
+#### ==================================================================
+# Dynamic Programming
+
+## Explanation
+Method for solving complex problems by breaking them down into simpler subproblems. It is applicable to problems exhibiting the properties of overlapping subproblems (problem can be broken down into smaller, reusable subproblems) & optimal substructure (the optimal solution to a problem can be constructed from the optimal solutions of its subproblems).
+
+### Approach
+- Define the state, determine what each subproblem represents in terms of variables
+- State transition, establish how to compute the solution of a subproblem using solutions of smaller subproblems
+- Base case, define the simplest subproblems with a known solution. 
+- Memoization or tabulation: store results of subproblems to avoid redundant computations. 
+
+### General Runtime
+
+## When to Use
+- Finding maximum, minimum, or optimal solution (shortest path, maximum profit)
+- Counting problems: number of ways to do something (counting paths, combinations)
+- Decision problems: sequence of decisions to achiev an optimal outcome
+
+
+## Templates
+#### ==================================================================
+
+
+
+
 #### ==================================================================
 # Backtracking
 ## Explanation
@@ -25,7 +54,7 @@ For ones I've done so far, we are creating 2 possibilities for each element (inc
 Problem(array, target):
     results = []
     array.sort() (because runtime is likely more than nlogn)
-
+  b
     def backtrack(index, subarray):
         if condition == target:
             results.append(subarray[::])
