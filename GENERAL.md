@@ -232,9 +232,49 @@ Problem(matrix, target_list_or_word):
         if backtrack(r,c,0):
             return True
     return False
+#### ==================================================================
 
 
 
+
+#### ==================================================================
+# Graphs
+
+## Explanation
+Data structures consisting of nodes and edges, used to model relationships and pathways such as networks, maps, socials. 
+
+- Consists of vertices and edges, or coordinates in a plane. 
+- Edges can be directed or undirected, and weighted or unweighted. 
+- 
+
+### General Runtime
+
+## When to Use
+- Network relationships - problems involving pathways or relationships
+- Traversal requirements - checking or visiting nodes and validating connectivity. 
+- Optimization - optimal paths or structures
+
+## How to solve
+- Identify components like graph structure, weighted/unweighted, directed/nondirected, etc. 
+- Determine the most suitable algorithm for the problem type (traversal, shortest path, MST). 
+- 
+
+## Templates
+def dfs(graph: Dict[int, List[int]], start: int) -> List[int]:
+    visited = set()
+    result = []
+
+    def dfs_recursive(node: int):
+        if node in visited:
+            return
+        visited.add(node)
+        result.append(node)
+        for neighbor in graph[node]:
+            dfs_recursive(neighbor)
+
+    dfs_recursive(start)
+    return result
+#### ==================================================================
 
 
 
