@@ -5,6 +5,92 @@
 
 
 
+#### ==================================================================
+# Sliding Window
+
+## Explanation
+Used to perform a required operation on a subset of data within a larger set. Maintain a window of elements that moves or slides through the data structure to process the data structure in segments. 
+
+- Some use fixed sized windows (otherwise this is just standard two pointer) and determine the direction of the slide on some criteria
+- Some use dynamic sized windows, changing based on certain criteria. 
+
+
+### General Runtime
+- Often O(n) or O(nlogn) if we are iterating through a list, and potentially needing to sort it. 
+
+## When to Use
+- Contiguous subarrays or substrings: if we need to find or process some contiguous parts of an array or string, sliding window is likely. 
+- Sum, average, or max/min in subarrays
+- Character patterns: solving patterns or substrings without repeating characters etc. 
+
+## How to solve
+- Identify application, do we have some contiguous subsection to work with or find?
+- Determine window type, dynamic or fixed size based on problem
+- Init variables for tracking the state of the window and its contents. 
+- Slide the window by adjusting pointers and modifying window state accordingly based on whatever internal criteria we are tracking. 
+
+## Common pitfalls
+- Boundary conditions and empty inputs
+- Clear and concise initialization of window and properties. 
+- Efficient updates and scanning criteria. 
+
+
+## Templates
+#### ==================================================================
+
+#### ==================================================================
+# Two Pointer
+
+## Explanation
+Similar to a simpler sliding window, we don't necessarilly need to track state of a whole range of values. 
+
+### General Runtime
+- Lots of O(N) applications with some nlogn if we're sorting to effectively use a two pointer setup. 
+
+## When to Use
+- Problems involving pairs of elements or comparing elements from both ends of a list
+- Benefit from sorting or if lists are already sorted. 
+
+## How to solve
+- Use two pointers to traverse an array from different ends, adjusting pointers based on certain criteria to arrive at a solution. 
+
+## Templates
+#### ==================================================================
+
+
+
+
+#### ==================================================================
+# Greedy Algorithms
+
+## Explanation
+Build up a solution piece by piece, always choosing the next piece that offers the most immediate benefit. The idea is that local optimization leads to global optimization.
+
+## When to Use
+- Optimization problems: if we need to max or min a certain criteria or value (maximum activities, min cost) etc. 
+- Choices and constraints: When each step involves making a choice that could impact some overall outcome. 
+- Comparative selection: problem involves selecting items based on a certain comparison (smallest, largest, etc).
+
+## How to solve
+- Understand the problem, clarify objective and any extraneous factors that can limit greedy's applicability. 
+- Identify the greedy strategy (criteria for optimal choices)
+- Implement the rest of the algorithm (sort if needed for greedy, track vars, rest of logic etc). 
+
+## Common pitfalls
+- Unsorted input
+- make sure nlogn is suitable in order to use sorting. 
+
+
+### Examples
+- Activity selection: selecting max number of activities that dont overlap with start and end times (sorting and then iteration)
+- Huffman coding: Create a binary tree for optimal prefix codes based on frequency of characters. 
+
+
+
+## Templates
+#### ==================================================================
+
+
 
 #### ==================================================================
 # Dynamic Programming
@@ -27,6 +113,41 @@ Method for solving complex problems by breaking them down into simpler subproble
 
 
 ## Templates
+#### ==================================================================
+
+
+#### ==================================================================
+# Binary Search
+
+## Explanation
+Efficient algorithm for finding an element in a sorted list of items. Works by shrinking the search criteria while guessing for a value. 
+- Requires sorted input
+- Utilizes divide and conquer
+
+
+### General Runtime
+O(log(n))
+
+## When to Use
+- Sorted Input: problems involve a sorted array or list
+- Search Optimization
+- Monotonic functions: problems where a function is strictly increasing or decreasing. 
+
+
+## Templates
+def binary_search(arr: List[int], target: int) -> int:
+    left, right = 0, len(arr) - 1
+
+    while left <= right:
+        mid = left + (right - left) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1
 #### ==================================================================
 
 
