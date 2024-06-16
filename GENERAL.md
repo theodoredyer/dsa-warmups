@@ -2,6 +2,7 @@
 - If we need to track a list, suppose a list of user_ids that someone is following for a twitter clone and we want to be able to add and remove in constant time, use a set instead of list, or for tracking all of the users of a system "user1 follows u2, u3, u4" "user 2 follows u4" etc, use a hashset with key = user, val = hashset of followees
 - Sets use [setname.add / setname.remove] not append
 - To sort a list of entities by something other than just pure value: "thing.sort(key=lambda i: i[1])"
+- When doing BFS where we need to track distance from the origin, pass that as a parameter through the element of the queue - way easier to not have tricky situations if we do this. 
 
 
 Review:
@@ -277,6 +278,47 @@ def dfs(graph: Dict[int, List[int]], start: int) -> List[int]:
 
     dfs_recursive(start)
     return result
+
+### Multi-point BFS (radiate from multiple nodes)
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        num_fresh = 0
+        num_rotten = 0
+        max_time = 0
+        rotten_q = deque()
+        ROWS = len(grid)
+        COLS = len(grid[0])
+        directions = [[1, 0],[-1, 0],[0, 1],[0, -1]]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1:
+                    num_fresh += 1
+                if grid[row][col] == 2:
+                    num_rotten += 1
+                    rotten_q.append((row, col, 0))
+
+        time = 0
+        seen = set()
+        while rotten_q:
+            r, c, curtime = rotten_q.popleft()
+            if((r not in range(ROWS))
+                or (c not in range(COLS))
+                or (grid[r][c] == 0)
+                or (r,c) in seen
+                ):
+                    continue
+            if grid[r][c] == 1:
+                num_fresh -= 1
+                max_time = max(curtime, max_time)
+            seen.add((r,c))
+            for dr, dc in directions:
+                rotten_q.append((r+dr, c+dc, curtime + 1))
+
+        print(num_fresh)
+        if num_fresh > 0:
+            return - 1
+        return max_time
 #### ==================================================================
 
 
