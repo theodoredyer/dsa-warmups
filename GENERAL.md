@@ -3,6 +3,25 @@
 - Sets use [setname.add / setname.remove] not append
 - To sort a list of entities by something other than just pure value: "thing.sort(key=lambda i: i[1])"
 - When doing BFS where we need to track distance from the origin, pass that as a parameter through the element of the queue - way easier to not have tricky situations if we do this. 
+- With undirected graph traversal, pass the previous node through DFS to avoid trying to jump back to the exact same edge since the connection is shared. 
+
+### Adjacency Maps
+Undirected:
+def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        
+        adj = {i:[] for i in range(n)}
+
+        for fst, snd in edges:
+            adj[fst].append(snd)
+            adj[snd].append(fst)
+
+Directed:
+def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        
+        preMap = {i:[] for i in range(numCourses)}
+
+        for crs, pre in prerequisites:
+            preMap[crs].append(pre)
 
 
 Review:
