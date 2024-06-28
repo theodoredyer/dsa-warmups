@@ -7,6 +7,7 @@
 
 ### Adjacency Maps
 Undirected:
+```python
 def validTree(self, n: int, edges: List[List[int]]) -> bool:
         
         adj = {i:[] for i in range(n)}
@@ -22,7 +23,7 @@ def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
 
         for crs, pre in prerequisites:
             preMap[crs].append(pre)
-
+```
 
 Review:
 - M 133
@@ -61,7 +62,25 @@ Used to perform a required operation on a subset of data within a larger set. Ma
 
 ## Templates
 #### ==================================================================
+```python
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        count = {}
+        longest = 0
 
+        l = 0
+        for r in range(len(s)):
+            window_len = r - l + 1
+            count[s[r]] = 1 + count.get(s[r], 0)
+
+            while max(count.values()) + k < window_len:
+                count[s[l]] -= 1
+                l += 1
+                window_len -= 1
+            
+            longest = max(longest, window_len)
+        return longest
+```
 #### ==================================================================
 # Two Pointer
 
@@ -138,7 +157,20 @@ Method for solving complex problems by breaking them down into simpler subproble
 
 ## Templates
 #### ==================================================================
+```python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [amount + 1] * (amount + 1)
 
+        dp[0] = 0
+
+        for curamt in range(1, amount + 1):
+            for c in coins:
+                if curamt - c >= 0:
+                    dp[curamt] = min(dp[curamt], 1 + dp[curamt - c])
+
+        return dp[amount] if dp[amount] != (amount + 1) else -1
+```
 
 #### ==================================================================
 # Binary Search
@@ -159,6 +191,7 @@ O(log(n))
 
 
 ## Templates
+```python
 def binary_search(arr: List[int], target: int) -> int:
     left, right = 0, len(arr) - 1
 
@@ -172,6 +205,7 @@ def binary_search(arr: List[int], target: int) -> int:
             right = mid - 1
 
     return -1
+```
 #### ==================================================================
 
 
@@ -196,6 +230,7 @@ For ones I've done so far, we are creating 2 possibilities for each element (inc
 ### Case - 1D we need to avoid duplicates
 - Often times we need to create combinations where we need to avoid duplicates:
 
+```python
 Problem(array, target):
     results = []
     array.sort() (because runtime is likely more than nlogn)
@@ -224,8 +259,10 @@ Problem(array, target):
 
     backtrack(0, [])
     return results
+```
 
 ### Case - 2D Search for a pattern in a matrix
+```python
 Problem(matrix, target_list_or_word):
 
     visited_path = set()
@@ -256,6 +293,7 @@ Problem(matrix, target_list_or_word):
         if backtrack(r,c,0):
             return True
     return False
+```
 #### ==================================================================
 
 
@@ -284,6 +322,7 @@ Data structures consisting of nodes and edges, used to model relationships and p
 - 
 
 ## Templates
+```python
 def dfs(graph: Dict[int, List[int]], start: int) -> List[int]:
     visited = set()
     result = []
@@ -298,8 +337,10 @@ def dfs(graph: Dict[int, List[int]], start: int) -> List[int]:
 
     dfs_recursive(start)
     return result
+```
 
 ### Multi-point BFS (radiate from multiple nodes)
+```python
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         num_fresh = 0
@@ -339,6 +380,7 @@ class Solution:
         if num_fresh > 0:
             return - 1
         return max_time
+```
 #### ==================================================================
 
 
@@ -357,6 +399,7 @@ Used for O(26*n) time lookups
 Fairly standout - when we need to look up / store strings for autocomplete/spellcheck, implementing dictionaries, sorted retrieval, 
 
 ## Templates
+```python
 class TrieNode:
     def __init__(self):
         self.children = {}
@@ -398,6 +441,7 @@ class Trie:
         if len(curr.children) == 0:
             return curr.endOfWord
         return True
+```
     
 
 #### ==================================================================
@@ -433,7 +477,31 @@ To access a node's parent: floor(index / 2)
 
 ## Templates
 #### ==================================================================
+```python
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        count = Counter(tasks)
+        maxHeap = [-cnt for cnt in count.values()]
+        heapq.heapify(maxHeap)
 
+        curtime = 0
+        q = deque()
+
+        while maxHeap or q:
+            curtime += 1
+
+            if maxHeap:
+                count = heapq.heappop(maxHeap) + 1
+
+                if count != 0:
+                    q.append([curtime + n, count])
+            
+            if q and q[0][0] == curtime:
+                entity = q.popleft()
+                heapq.heappush(maxHeap, entity[1])
+
+        return curtime
+```
 
 
 
