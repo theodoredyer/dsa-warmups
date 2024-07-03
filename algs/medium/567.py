@@ -38,3 +38,18 @@ class Solution:
                 return True
 
         return False
+    
+
+"""
+At a high level, what we want to do here is first set up a representation of what the 
+string s1 looks like as a counter dictionary (occurrances of each value) and then 
+via a sliding window approach where we maintain a second dictionary based on a sliding
+window of looking through s2 (with window length of s1) we want to see if our dictionary
+representation of s1 is ever equivalent to this second builder dictionary
+
+if it is equivalent, we found the substring permutation. If it is not, move the window right by 
+incrementing l and removing an instance of the char at l from our builder dict, and then 
+incrementing r. 
+
+
+"""
