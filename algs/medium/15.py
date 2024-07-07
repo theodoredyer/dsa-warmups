@@ -27,3 +27,14 @@ class Solution:
                         l += 1
                     
         return res
+
+"""
+Recognize that sorting is acceptable and correct here
+
+After sorting, our a value is the lowest value in the array and b and c can be any of the
+remaining values. 
+
+If we encounter a duplicate a value on the next iteration just continue because 
+we know any b and cs that satisfy this a value will just cause dupes. 
+
+"""
