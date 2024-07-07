@@ -18,3 +18,10 @@ class Solution:
         return longest
 
             
+"""
+Maintain sliding window, when incrementing r see if new value is already in our set
+and if it is, increment l until it isn't
+
+Track and update maxes along the way. 
+
+"""
