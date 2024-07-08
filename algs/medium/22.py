@@ -20,3 +20,13 @@ class Solution:
 
         backtrack(0,0)
         return res
+
+
+"""
+generate permutations/combinations == recursive backtracking 100%
+
+Base cases are if our total number of parentheses are met for both open
+and closed, append our result, otherwise if we can add an open parenthesis
+(where open < n) then append ( to stack, and recurse. 
+
+"""
