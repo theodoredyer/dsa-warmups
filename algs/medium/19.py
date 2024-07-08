@@ -21,3 +21,9 @@ class Solution:
         lptr.next = node_to_remove.next
 
         return dummy.next
+    
+"""
+Essentially set up fast/slow pointers, fast should be n moves ahead of slow
+and by the time fast reaches the end, we know we need to remove the node currently as slow. 
+
+"""

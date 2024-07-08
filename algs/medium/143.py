@@ -35,3 +35,9 @@ class Solution:
 
         nodelist[lptr].next = None
         
+
+"""
+Throw all of the nodes in an array and then set up L and R pointers,
+modifying the next pointers accordingly. 
+
+"""
