@@ -19,3 +19,12 @@ class Solution:
         node.next = list1 or list2
 
         return dummy.next
+    
+"""
+Sort of as simple as it seems, just remember to do the last check when we only have one list
+remaining to grab the rest of it
+
+Traverse item by item in list1/list2 while either of them have remaining elements, set node.next
+to the lower of these two list heads and then set node to node.next after and run it back. 
+
+"""
