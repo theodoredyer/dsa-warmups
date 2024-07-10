@@ -54,4 +54,8 @@ This is a bit of a tricky problem even after identifying the solution due to she
 track this sort of 'least used' principle, while still maintaiing O(1) for overall complexity of basic operations, we need to not track times for each 
 individual entity, but instead the relationships between these entities. When we are thinking about relationships, the natural solution is to use linked lists
 and specifically in this case doubly linked lists help us arrive at our solution. 
+
+Additionally, to check and see if a node is in the cache we want to set up a dictionary where the key is the provided key, and the value is the actual node
+in the doubly linked list so that we can easily access it for removal/addition
+
 """

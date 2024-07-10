@@ -30,3 +30,14 @@ class Solution:
                 r += 1
 
         return res
+    
+"""
+For each index in the array, start from an empty substring and set up L and R
+pointers to look at our starting index, just keep pushing out the l and r pointers until a boundary gets 
+hit or we no longer have the same values (to keep the palindrome valid) and then update our
+max if the current max is bigger. 
+
+We also have to account for the even length substrings, and we do this by doing a second pass
+but instead of setting l and r both to i, we set r to i+1 to start on an offset. 
+
+"""
