@@ -283,7 +283,7 @@ Problem(matrix, target_list_or_word):
             backtrack(r-1, c, INV+1)
             or backtrack(r+1, c, INV+1)
             or backtrack(r, c-1, INV+1)
-            or backtrack(r, c+1, INV+!)
+            or backtrack(r, c+1, INV+1)
         )
 
         visited_path.remove((r,c))

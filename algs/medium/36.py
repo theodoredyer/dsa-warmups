@@ -19,3 +19,16 @@ class Solution:
                 squares[(i//3, k//3)].add(val)
 
         return True
+    
+"""
+Simple problem, just set up a dictionary for each row, column, and square
+and when iterating through the whole array, if we encounter an item that is already in 
+one of these then we know we broke a rule and should return false. 
+
+the coordinate for the 'square' is the index // 3
+
+also for the square dictionary make the key a tuple since we can't do list
+
+
+
+"""

@@ -2,11 +2,13 @@ class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         count = {}
         longest = 0
+        maxfreq = 0
 
         l = 0
         for r in range(len(s)):
             window_len = r - l + 1
             count[s[r]] = 1 + count.get(s[r], 0)
+            maxfreq = max(maxfreq, count[s[r]])
 
             while max(count.values()) + k < window_len:
                 count[s[l]] -= 1
@@ -26,4 +28,7 @@ so we need to instead move up our left pointer and then continue scanning forwar
 
 Slight optimization can be made to now have to get the max of the count dictionary by instead just tracking the overall frequency max count, because if we 
 dont ever meet a string that is longer than the existing longest, the max count will never be exceeded anbd corresponding longest var wont either. 
+
+Note, we dont need to track what the current max frequency + most frequent character is, we can just 
+check the max of dictionary.values()
 """
